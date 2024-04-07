@@ -85,7 +85,7 @@ public static class Notes
     /// </summary>
     /// <param name="id">Id del inventario.</param>
     /// <param name="token">Token de acceso.</param>
-    public async static Task<ResponseBase> Update(int id, string name, string description, string token)
+    public async static Task<ResponseBase> Update(int id, string name, string description, int color, string token)
     {
 
         // Cliente HTTP.
@@ -96,6 +96,7 @@ public static class Notes
         client.AddParameter("id", id);
         client.AddParameter("name", name);
         client.AddParameter("description", description);
+        client.AddParameter("color", color);
 
         // Resultado.
         var Content = await client.Patch<ResponseBase>();

@@ -1,6 +1,4 @@
-﻿using LIN.Access.Notes;
-using LIN.Types.Emma.Models;
-using LIN.Types.Notes.Models;
+﻿using LIN.Types.Emma.Models;
 
 namespace LIN.Access.Notes.Controllers;
 
@@ -10,9 +8,9 @@ public static class Profile
 
 
     /// <summary>
-    /// Obtiene los datos de una cuenta especifica
+    /// Obtener los devices.
     /// </summary>
-    /// <param name="id">Id de la cuenta</param>
+    /// <param name="token">Token de acceso.</param>
     public async static Task<ReadAllResponse<DeviceModel>> ReadDevices(string token)
     {
 
@@ -59,7 +57,7 @@ public static class Profile
     /// <summary>
     /// Búsqueda de usuarios por medio de su Id
     /// </summary>
-    public async static Task<ReadAllResponse<SessionModel<ProfileModel>>> SearhByPattern(string pattern, string token)
+    public async static Task<ReadAllResponse<SessionModel<ProfileModel>>> SearchByPattern(string pattern, string token)
     {
 
         // Cliente HTTP.

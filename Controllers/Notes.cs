@@ -1,7 +1,4 @@
-﻿using LIN.Access.Notes;
-using LIN.Types.Notes.Models;
-
-namespace LIN.Access.Notes.Controllers;
+﻿namespace LIN.Access.Notes.Controllers;
 
 
 public static class Notes
@@ -9,7 +6,7 @@ public static class Notes
 
 
     /// <summary>
-    /// Crear inventario.
+    /// Crear nota.
     /// </summary>
     /// <param name="modelo">Modelo.</param>
     /// <param name="token">Token de acceso.</param>
@@ -33,7 +30,7 @@ public static class Notes
 
 
     /// <summary>
-    /// Obtener los inventarios asociados a una cuenta.
+    /// Obtener las notas asociadas a un perfil.
     /// </summary>
     /// <param name="token">Token de acceso.</param>
     public async static Task<ReadAllResponse<NoteDataModel>> ReadAll(string token)
@@ -56,9 +53,9 @@ public static class Notes
 
 
     /// <summary>
-    /// Obtener un inventario.
+    /// Obtener una nota.
     /// </summary>
-    /// <param name="id">Id del inventario.</param>
+    /// <param name="id">Id de la nota.</param>
     /// <param name="token">Token de acceso.</param>
     public async static Task<ReadOneResponse<NoteDataModel>> Read(int id, string token)
     {
@@ -80,10 +77,14 @@ public static class Notes
     }
 
 
+
     /// <summary>
-    /// Obtener un inventario.
+    /// Actualizar una nota.
     /// </summary>
-    /// <param name="id">Id del inventario.</param>
+    /// <param name="id">Id de la nota.</param>
+    /// <param name="name">Nuevo titulo.</param>
+    /// <param name="description">Nuevo contenido.</param>
+    /// <param name="color">Nuevo color.</param>
     /// <param name="token">Token de acceso.</param>
     public async static Task<ResponseBase> Update(int id, string name, string description, int color, string token)
     {
@@ -100,6 +101,60 @@ public static class Notes
 
         // Resultado.
         var Content = await client.Patch<ResponseBase>();
+
+        // Retornar.
+        return Content;
+
+
+    }
+
+
+
+    /// <summary>
+    /// Actualizar una nota.
+    /// </summary>
+    /// <param name="id">Id de la nota.</param>
+    /// <param name="color">Nuevo color.</param>
+    /// <param name="token">Token de acceso.</param>
+    public async static Task<ResponseBase> Update(int id, int color, string token)
+    {
+
+        // Cliente HTTP.
+        Client client = Service.GetClient("notes/update/color");
+
+        // Headers.
+        client.AddHeader("token", token);
+        client.AddParameter("id", id);
+        client.AddParameter("color", color);
+
+        // Resultado.
+        var Content = await client.Patch<ResponseBase>();
+
+        // Retornar.
+        return Content;
+
+
+    }
+
+
+
+    /// <summary>
+    /// Eliminar una nota.
+    /// </summary>
+    /// <param name="id">Id de la nota.</param>
+    /// <param name="token">Token de acceso.</param>
+    public async static Task<ResponseBase> Delete(int id, string token)
+    {
+
+        // Cliente HTTP.
+        Client client = Service.GetClient("notes");
+
+        // Headers.
+        client.AddHeader("token", token);
+        client.AddParameter("id", id);
+
+        // Resultado.
+        var Content = await client.Delete<ResponseBase>();
 
         // Retornar.
         return Content;

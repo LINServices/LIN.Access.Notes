@@ -1,6 +1,4 @@
-﻿using LIN.Types.Notes.Models;
-
-namespace LIN.Access.Notes.Controllers;
+﻿namespace LIN.Access.Notes.Controllers;
 
 
 public class Authentication
@@ -55,7 +53,6 @@ public class Authentication
         return Content;
 
     }
-
 
 
 }

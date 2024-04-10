@@ -1,9 +1,4 @@
-﻿using LIN.Access.Notes;
-using LIN.Types.Notes.Enumerations;
-using LIN.Types.Notes.Models;
-using LIN.Types.Notes.Transient;
-
-namespace LIN.Access.Notes.Controllers;
+﻿namespace LIN.Access.Notes.Controllers;
 
 
 public static class NotesAccess
@@ -11,9 +6,9 @@ public static class NotesAccess
 
 
     /// <summary>
-    /// Crear acceso a un inventario.
+    /// Crear acceso a nota.
     /// </summary>
-    /// <param name="modelo">Modelo de acceso.</param>
+    /// <param name="modelo">Modelo.</param>
     /// <param name="token">Token de acceso.</param>
     public async static Task<CreateResponse> Create(NoteAccessDataModel modelo, string token)
     {

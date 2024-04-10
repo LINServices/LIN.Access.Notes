@@ -1,5 +1,4 @@
 ﻿using LIN.Access.Notes.Controllers;
-using LIN.Types.Notes.Models;
 
 namespace LIN.Access.Notes;
 
@@ -8,13 +7,25 @@ public sealed class Session
 {
 
 
-    public string Token { get; set; }
-
-
     /// <summary>
     /// Información del usuario
     /// </summary>
-    public ProfileModel Informacion { get; private set; } = new();
+    public ProfileModel Profile { get; private set; } = new();
+
+
+
+    /// <summary>
+    /// Es una sesión local.
+    /// </summary>
+    public bool IsLocal { get; set; }
+
+
+
+    /// <summary>
+    /// Token de acceso.
+    /// </summary>
+    public string Token { get; set; }
+
 
 
     /// <summary>
@@ -23,6 +34,10 @@ public sealed class Session
     public AccountModel Account { get; private set; } = new();
 
 
+
+    /// <summary>
+    /// Token de la cuenta.
+    /// </summary>
     public string AccountToken { get; set; }
 
 
@@ -30,14 +45,14 @@ public sealed class Session
     /// <summary>
     /// Si la sesión es activa
     /// </summary>
-    public static bool IsAccountOpen { get => Instance.Account.Id > 0; }
+    public static bool IsAccountOpen { get => Instance.Account.Id != 0; }
 
 
 
     /// <summary>
     /// Si la sesión es activa
     /// </summary>
-    public static bool IsLocalOpen { get => Instance.Informacion.ID > 0; }
+    public static bool IsLocalOpen { get => Instance.Profile.ID != 0; }
 
 
 
@@ -59,12 +74,12 @@ public sealed class Session
 
 
         // Datos de la instancia
-        Instance.Informacion = response.Model.Profile;
+        Instance.Profile = response.Model.Profile;
         Instance.Account = response.Model.Account;
 
         Instance.Token = response.Token;
         Instance.AccountToken = response.Model.TokenCollection["identity"];
-
+        Instance.IsLocal = false;
         return (Instance, Responses.Success);
 
     }
@@ -89,11 +104,12 @@ public sealed class Session
 
 
         // Datos de la instancia
-        Instance.Informacion = response.Model.Profile;
+        Instance.Profile = response.Model.Profile;
         Instance.Account = response.Model.Account;
 
         Instance.Token = response.Token;
         Instance.AccountToken = response.Model.TokenCollection["identity"];
+        Instance.IsLocal = false;
 
         return (Instance, Responses.Success);
 
@@ -109,7 +125,7 @@ public sealed class Session
     /// </summary>
     public static void CloseSession()
     {
-        Instance.Informacion = new();
+        Instance.Profile = new();
         Instance.Account = new();
     }
 
@@ -127,10 +143,32 @@ public sealed class Session
     {
         Token = string.Empty;
         AccountToken = string.Empty;
-        Informacion = new();
+        Profile = new();
     }
 
 
     public static Session Instance => _instance;
+
+
+
+    public static void GenerateLocal(string name)
+    {
+        Instance.IsLocal = true;
+        Instance.Account = new()
+        {
+            Id = -1,
+            Name = name,
+            Identity = new()
+            {
+                Unique = name
+            }
+        };
+        Instance.Profile = new()
+        {
+            ID = -1
+        };
+
+    }
+
 
 }

@@ -14,7 +14,7 @@ public static class Notes
     {
 
         // Cliente HTTP.
-        Client client = Service.GetClient("notes/create");
+        Client client = Service.GetClient("notes");
 
         // Headers.
         client.AddHeader("token", token);
@@ -61,7 +61,7 @@ public static class Notes
     {
 
         // Cliente HTTP.
-        Client client = Service.GetClient("notes/read");
+        Client client = Service.GetClient("notes");
 
         // Headers.
         client.AddHeader("token", token);
@@ -116,7 +116,7 @@ public static class Notes
     {
 
         // Cliente HTTP.
-        Client client = Service.GetClient("notes/update/color");
+        Client client = Service.GetClient("notes/color");
 
         // Headers.
         client.AddHeader("token", token);

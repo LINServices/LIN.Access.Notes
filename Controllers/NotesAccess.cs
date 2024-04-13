@@ -142,7 +142,7 @@ public static class NotesAccess
     {
 
         // Cliente HTTP.
-        Client client = Service.GetClient("notes/access/delete/one");
+        Client client = Service.GetClient("notes/access");
 
         // Headers.
         client.AddHeader("token", token);

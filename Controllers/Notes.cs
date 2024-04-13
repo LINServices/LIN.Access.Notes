@@ -86,7 +86,7 @@ public static class Notes
     /// <param name="description">Nuevo contenido.</param>
     /// <param name="color">Nuevo color.</param>
     /// <param name="token">Token de acceso.</param>
-    public async static Task<ResponseBase> Update(int id, string name, string description, int color, string token)
+    public async static Task<ResponseBase> Update(NoteDataModel note, string token)
     {
 
         // Cliente HTTP.
@@ -94,13 +94,9 @@ public static class Notes
 
         // Headers.
         client.AddHeader("token", token);
-        client.AddParameter("id", id);
-        client.AddParameter("name", name);
-        client.AddParameter("description", description);
-        client.AddParameter("color", color);
 
         // Resultado.
-        var Content = await client.Patch<ResponseBase>();
+        var Content = await client.Patch<ResponseBase>(note);
 
         // Retornar.
         return Content;

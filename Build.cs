@@ -8,8 +8,8 @@ public class Build
     public static void Init(string? url = null)
     {
         Service._Service = new();
-        Service._Service.SetDefault(url ?? "http://api.notes.linapps.co/");
-        //Service._Service.SetDefault("http://localhost:5089/");
+        Service._Service.SetDefault(url ?? "https://api.notes.linplatform.com/");
+        //Service._Service.SetDefault("http://localhost:6001/");
     }
 
 

@@ -1,4 +1,6 @@
-﻿namespace LIN.Access.Notes.Controllers;
+﻿using LIN.Types.Notes.Transient;
+
+namespace LIN.Access.Notes.Controllers;
 
 
 public static class NotesAccess
@@ -60,7 +62,7 @@ public static class NotesAccess
     /// Obtener las invitaciones.
     /// </summary>
     /// <param name="token">Token de acceso.</param>
-    public async static Task<ReadAllResponse<Notificacion>> ReadNotifications(string token)
+    public async static Task<ReadAllResponse<Notification>> ReadNotifications(string token)
     {
 
         // Cliente HTTP.
@@ -70,7 +72,7 @@ public static class NotesAccess
         client.AddHeader("token", token);
 
         // Resultado.
-        var Content = await client.Get<ReadAllResponse<Notificacion>>();
+        var Content = await client.Get<ReadAllResponse<Notification>>();
 
         // Retornar.
         return Content;
@@ -84,7 +86,7 @@ public static class NotesAccess
     /// </summary>
     /// <param name="id">Id de la invitación.</param>
     /// <param name="token">Token de acceso.</param>
-    public async static Task<ReadOneResponse<Notificacion>> ReadNotification(int id, string token)
+    public async static Task<ReadOneResponse<Notification>> ReadNotification(int id, string token)
     {
 
         // Cliente HTTP.
@@ -95,7 +97,7 @@ public static class NotesAccess
         client.AddHeader("id", id);
 
         // Resultado.
-        var Content = await client.Get<ReadOneResponse<Notificacion>>();
+        var Content = await client.Get<ReadOneResponse<Notification>>();
 
         // Retornar.
         return Content;

@@ -1,4 +1,5 @@
 ﻿using LIN.Access.Notes.Controllers;
+using LIN.Access.Notes.Observers;
 
 namespace LIN.Access.Notes;
 
@@ -17,7 +18,7 @@ public sealed class Session
     /// <summary>
     /// Es una sesión local.
     /// </summary>
-    public bool IsLocal { get; set; }
+    public SessionType Type { get; set; }
 
 
 
@@ -60,11 +61,12 @@ public sealed class Session
     /// <summary>
     /// Recarga o inicia una sesión
     /// </summary>
-    public static async Task<(Session? Sesion, Responses Response)> LoginWith(string user, string password)
+    public static async Task<(Session? Sesion, Responses Response)> LoginWith(string user, string password, bool safe)
     {
 
         // Cierra la sesión Actual
-        CloseSession();
+        if (!safe)
+            CloseSession();
 
         // Validación de user
         var response = await Authentication.Login(user, password);
@@ -72,14 +74,14 @@ public sealed class Session
         if (response.Response != Responses.Success)
             return (null, response.Response);
 
-
         // Datos de la instancia
         Instance.Profile = response.Model.Profile;
         Instance.Account = response.Model.Account;
 
         Instance.Token = response.Token;
         Instance.AccountToken = response.Model.TokenCollection["identity"];
-        Instance.IsLocal = false;
+        Instance.Type = SessionType.Connected;
+        SessionObserver.Invoke(Instance);
         return (Instance, Responses.Success);
 
     }
@@ -109,8 +111,9 @@ public sealed class Session
 
         Instance.Token = response.Token;
         Instance.AccountToken = response.Model.TokenCollection["identity"];
-        Instance.IsLocal = false;
+        Instance.Type = SessionType.Connected;
 
+        SessionObserver.Invoke(Instance);
         return (Instance, Responses.Success);
 
     }
@@ -151,24 +154,20 @@ public sealed class Session
 
 
 
-    public static void GenerateLocal(string name)
+    public static void GenerateLocal(AccountModel account, SessionType type)
     {
-        Instance.IsLocal = true;
-        Instance.Account = new()
-        {
-            Id = -1,
-            Name = name,
-            Identity = new()
-            {
-                Unique = name
-            }
-        };
-        Instance.Profile = new()
-        {
-            ID = -1
-        };
-
+        Instance.Type = type;
+        Instance.Account = account;
+        SessionObserver.Invoke(Instance);
     }
 
 
+}
+
+
+public enum SessionType
+{
+    Local,
+    Connected,
+    Sync
 }

@@ -79,6 +79,32 @@ public static class Notes
 
 
     /// <summary>
+    /// Obtener una nota.
+    /// </summary>
+    /// <param name="id">Id de la nota.</param>
+    /// <param name="token">Token de acceso.</param>
+    public async static Task<ReadOneResponse<Languages>> ReadLang(int id, string token)
+    {
+
+        // Cliente HTTP.
+        Client client = Service.GetClient("notes/lang");
+
+        // Headers.
+        client.AddHeader("token", token);
+        client.AddParameter("id", id);
+
+        // Resultado.
+        var Content = await client.Get<ReadOneResponse<Languages>>();
+
+        // Retornar.
+        return Content;
+
+
+    }
+
+
+
+    /// <summary>
     /// Actualizar una nota.
     /// </summary>
     /// <param name="id">Id de la nota.</param>
@@ -86,7 +112,7 @@ public static class Notes
     /// <param name="description">Nuevo contenido.</param>
     /// <param name="color">Nuevo color.</param>
     /// <param name="token">Token de acceso.</param>
-    public async static Task<ResponseBase> Update(NoteDataModel note, string token)
+    public async static Task<ReadOneResponse<Languages>> Update(NoteDataModel note, string token)
     {
 
         // Cliente HTTP.
@@ -96,7 +122,7 @@ public static class Notes
         client.AddHeader("token", token);
 
         // Resultado.
-        var Content = await client.Patch<ResponseBase>(note);
+        var Content = await client.Patch<ReadOneResponse<Languages>>(note);
 
         // Retornar.
         return Content;

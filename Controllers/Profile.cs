@@ -1,6 +1,4 @@
-﻿using LIN.Types.Emma.Models;
-
-namespace LIN.Access.Notes.Controllers;
+﻿namespace LIN.Access.Notes.Controllers;
 
 
 public static class Profile
@@ -11,7 +9,7 @@ public static class Profile
     /// Obtener los devices.
     /// </summary>
     /// <param name="token">Token de acceso.</param>
-    public async static Task<ReadAllResponse<DeviceModel>> ReadDevices(string token)
+    public static async Task<ReadAllResponse<DeviceModel>> ReadDevices(string token)
     {
 
         // Cliente HTTP.
@@ -34,7 +32,7 @@ public static class Profile
     /// Obtiene los datos de una cuenta especifica
     /// </summary>
     /// <param name="id">Id de la cuenta</param>
-    public async static Task<ReadOneResponse<ProfileModel>> ReadOne(int id, string token)
+    public static async Task<ReadOneResponse<ProfileModel>> ReadOne(int id, string token)
     {
 
         // Cliente HTTP.
@@ -57,7 +55,7 @@ public static class Profile
     /// <summary>
     /// Búsqueda de usuarios por medio de su Id
     /// </summary>
-    public async static Task<ReadAllResponse<SessionModel<ProfileModel>>> SearchByPattern(string pattern, string token)
+    public static async Task<ReadAllResponse<SessionModel<ProfileModel>>> SearchByPattern(string pattern, string token)
     {
 
         // Cliente HTTP.
@@ -82,7 +80,7 @@ public static class Profile
     /// </summary>
     /// <param name="token">Preguntar a Emma.</param>
     /// <param name="token">Token de acceso.</param>
-    public async static Task<ReadOneResponse<ResponseIAModel>> ToEmma(string modelo, string token)
+    public static async Task<ReadOneResponse<LIN.Types.Cloud.OpenAssistant.Api.AssistantResponse>> ToEmma(string modelo, string token)
     {
 
         // Cliente
@@ -91,7 +89,7 @@ public static class Profile
         // Headers.
         client.AddHeader("tokenAuth", token);
 
-        return await client.Post<ReadOneResponse<ResponseIAModel>>(modelo);
+        return await client.Post<ReadOneResponse<LIN.Types.Cloud.OpenAssistant.Api.AssistantResponse>>(modelo);
 
     }
 

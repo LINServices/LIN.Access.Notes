@@ -53,7 +53,7 @@ public sealed class Session
     /// <summary>
     /// Si la sesión es activa
     /// </summary>
-    public static bool IsLocalOpen { get => Instance.Profile.ID != 0; }
+    public static bool IsLocalOpen { get => Instance.Profile.Id != 0; }
 
 
 

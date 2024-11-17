@@ -1,9 +1,7 @@
 ﻿namespace LIN.Access.Notes.Controllers;
 
-
 public static class Notes
 {
-
 
     /// <summary>
     /// Crear nota.
@@ -24,9 +22,7 @@ public static class Notes
 
         // Retornar.
         return Content;
-
     }
-
 
 
     /// <summary>
@@ -47,9 +43,7 @@ public static class Notes
 
         // Retornar.
         return Content;
-
     }
-
 
 
     /// <summary>
@@ -72,10 +66,7 @@ public static class Notes
 
         // Retornar.
         return Content;
-
-
     }
-
 
 
     /// <summary>
@@ -98,19 +89,13 @@ public static class Notes
 
         // Retornar.
         return Content;
-
-
     }
-
 
 
     /// <summary>
     /// Actualizar una nota.
     /// </summary>
-    /// <param name="id">Id de la nota.</param>
-    /// <param name="name">Nuevo titulo.</param>
-    /// <param name="description">Nuevo contenido.</param>
-    /// <param name="color">Nuevo color.</param>
+    /// <param name="note">Nota.</param>
     /// <param name="token">Token de acceso.</param>
     public async static Task<ReadOneResponse<Languages>> Update(NoteDataModel note, string token)
     {
@@ -126,10 +111,7 @@ public static class Notes
 
         // Retornar.
         return Content;
-
-
     }
-
 
 
     /// <summary>
@@ -154,10 +136,7 @@ public static class Notes
 
         // Retornar.
         return Content;
-
-
     }
-
 
 
     /// <summary>
@@ -180,9 +159,6 @@ public static class Notes
 
         // Retornar.
         return Content;
-
-
     }
-
 
 }

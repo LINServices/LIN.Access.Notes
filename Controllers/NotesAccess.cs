@@ -1,11 +1,7 @@
-﻿using LIN.Types.Notes.Transient;
-
-namespace LIN.Access.Notes.Controllers;
-
+﻿namespace LIN.Access.Notes.Controllers;
 
 public static class NotesAccess
 {
-
 
     /// <summary>
     /// Crear acceso a nota.
@@ -26,9 +22,7 @@ public static class NotesAccess
 
         // Retornar.
         return Content;
-
     }
-
 
 
     /// <summary>
@@ -53,9 +47,7 @@ public static class NotesAccess
 
         // Retornar.
         return Content;
-
     }
-
 
 
     /// <summary>
@@ -76,9 +68,7 @@ public static class NotesAccess
 
         // Retornar.
         return Content;
-
     }
-
 
 
     /// <summary>
@@ -101,10 +91,7 @@ public static class NotesAccess
 
         // Retornar.
         return Content;
-
     }
-
-
 
 
     /// <summary>
@@ -133,7 +120,6 @@ public static class NotesAccess
     }
 
 
-
     /// <summary>
     /// Eliminar a alguien de un inventario.
     /// </summary>
@@ -158,7 +144,5 @@ public static class NotesAccess
         return Content;
 
     }
-
-
 
 }

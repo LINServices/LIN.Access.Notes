@@ -1,15 +1,12 @@
 ﻿namespace LIN.Access.Notes.Observers;
 
-
 public class SessionObserver
 {
-
 
     /// <summary>
     /// Evento al actualizar.
     /// </summary>
-    public static event EventHandler<Session>? OnUpdate;
-
+    public static event EventHandler<Sessions.Session>? OnUpdate;
 
 
     /// <summary>
@@ -24,7 +21,7 @@ public class SessionObserver
     /// <summary>
     /// Invocar.
     /// </summary>
-    public static void Invoke(Session e)
+    public static void Invoke(Sessions.Session e)
     {
         OnUpdate?.Invoke(null, e);
     }

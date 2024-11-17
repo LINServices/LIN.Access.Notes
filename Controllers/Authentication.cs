@@ -1,9 +1,7 @@
 ﻿namespace LIN.Access.Notes.Controllers;
 
-
 public class Authentication
 {
-
 
     /// <summary>
     /// Iniciar sesión.
@@ -32,7 +30,6 @@ public class Authentication
     }
 
 
-
     /// <summary>
     /// Obtener una sesión por medio del token.
     /// </summary>
@@ -53,6 +50,5 @@ public class Authentication
         return Content;
 
     }
-
 
 }

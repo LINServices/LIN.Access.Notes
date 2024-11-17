@@ -1,12 +1,7 @@
 ﻿namespace LIN.Access.Notes.Hubs;
 
-
 public sealed class NotesHub
 {
-
-
-    //======== Eventos ========//
-
 
     /// <summary>
     /// Recibe un comando.
@@ -14,15 +9,10 @@ public sealed class NotesHub
     public event EventHandler<CommandModel>? OnReceiveCommand;
 
 
-
-    //======== Propiedades ========//
-
-
     /// <summary>
     /// Conexión del Hub
     /// </summary>
     private HubConnection? HubConnection { get; set; }
-
 
 
     /// <summary>

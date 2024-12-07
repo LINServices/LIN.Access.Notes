@@ -1,11 +1,19 @@
-﻿namespace LIN.Access.Notes;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-public class Build
+namespace LIN.Access.Notes;
+
+public static class Build
 {
-    public static void Init(string? url = null)
+
+    /// <summary>
+    /// Utilizar LIN Notes.
+    /// </summary>
+    /// <param name="url">Ruta.</param>
+    public static IServiceCollection AddNotesService(this IServiceCollection service, string? url = null)
     {
         Service._Service = new();
         Service._Service.SetDefault(url ?? "https://api.notes.linplatform.com/");
-        //Service._Service.SetDefault("http://localhost:6001/");
+        return service;
     }
+
 }

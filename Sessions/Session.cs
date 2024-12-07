@@ -27,7 +27,7 @@ public class Session : ISession
     /// <summary>
     /// Información del usuario
     /// </summary>
-    public AccountModel Account { get; private set; } = new();
+    public AccountModel Account { get; set; } = new();
 
 
     /// <summary>

@@ -24,7 +24,7 @@ public interface ISession
     /// <summary>
     /// Información del usuario
     /// </summary>
-    public AccountModel Account { get; }
+    public AccountModel Account { get; set; }
 
 
     /// <summary>

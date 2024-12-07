@@ -1,12 +1,20 @@
-﻿namespace LIN.Access.Notes;
+﻿using LIN.Access.Notes.Sessions;
+
+namespace LIN.Access.Notes;
 
 public class SessionManager
 {
 
     /// <summary>
+    /// Session default;
+    /// </summary>
+    public Session? Default {  get; set; }
+
+
+    /// <summary>
     /// Lista de sesiones.
     /// </summary>
-    public List<Sessions.Session> Sessions { get; set; } = [];
+    public List<Session> Sessions { get; set; } = [];
 
 
     /// <summary>
@@ -15,17 +23,22 @@ public class SessionManager
     /// <param name="user">Usuario.</param>
     /// <param name="password">Contraseña.</param>
     /// <param name="safe">Es seguro.</param>
-    public async Task StarSession(string user, string password, bool safe)
+    public async Task<(Session session, Responses responses)> StarSession(string user, string password, bool safe)
     {
 
         // Nueva sesion.
         var session = new Sessions.Session();
 
         // Iniciar.
-        await session.LoginWith(user, password, safe);
+        var response = await session.LoginWith(user, password, safe);
 
         // Agregar sesion.
         Sessions.Add(session);
+
+        // Default.
+        SetDefault(session);
+
+        return (session, response);
     }
 
 
@@ -33,17 +46,56 @@ public class SessionManager
     /// Iniciar sesion.
     /// </summary>
     /// <param name="token">Token.</param>
-    public async Task StarSession(string token)
+    public async Task<(Session session, Responses responses)> StarSession(string token)
     {
 
         // Nueva sesion.
         var session = new Sessions.Session();
 
         // Iniciar.
-        await session.LoginWith(token);
+        var response = await session.LoginWith(token);
 
         // Agregar sesion.
         Sessions.Add(session);
+
+        // Default.
+        SetDefault(session);
+
+        return (session, response);
+    }
+
+
+    /// <summary>
+    /// Generar sesión local.
+    /// </summary>
+    /// <param name="account">Cuenta.</param>
+    /// <param name="type">Tipo.</param>
+    public void GenerateLocal(AccountModel account, SessionType type)
+    {
+
+        // Nueva sesion.
+        var session = new Session
+        {
+            Type = type,
+            Account = account
+        };
+
+        Sessions.Add(session);
+    }
+
+
+    /// <summary>
+    /// Establecer sesión por defecto.
+    /// </summary>
+    /// <param name="force">Forzar.</param>
+    public void SetDefault(Session session,bool force = false)
+    {
+
+        if (!force && session is not null)
+            return;
+
+        Default = session;
+
     }
 
 

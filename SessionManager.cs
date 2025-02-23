@@ -8,7 +8,7 @@ public class SessionManager
     /// <summary>
     /// Session default;
     /// </summary>
-    public Session? Default {  get; set; }
+    public Session? Default { get; set; }
 
 
     /// <summary>
@@ -88,10 +88,10 @@ public class SessionManager
     /// Establecer sesión por defecto.
     /// </summary>
     /// <param name="force">Forzar.</param>
-    public void SetDefault(Session session,bool force = false)
+    public void SetDefault(Session session, bool force = false)
     {
 
-        if (!force && session is not null)
+        if (!force && session is null)
             return;
 
         Default = session;

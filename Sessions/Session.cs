@@ -64,7 +64,7 @@ public class Session : ISession
 
         if (response.Response != Responses.Success)
             return response.Response;
-
+        
         // Datos de la instancia
         Profile = response.Model.Profile;
         Account = response.Model.Account;

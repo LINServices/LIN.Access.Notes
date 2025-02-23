@@ -21,7 +21,7 @@ public class Session : ISession
     /// <summary>
     /// Token de acceso.
     /// </summary>
-    public string Token { get; set; }
+    public string Token { get; set; } = string.Empty;
 
 
     /// <summary>
@@ -33,7 +33,7 @@ public class Session : ISession
     /// <summary>
     /// Token de la cuenta.
     /// </summary>
-    public string AccountToken { get; set; }
+    public string AccountToken { get; set; } = string.Empty;
 
 
     /// <summary>
@@ -51,7 +51,7 @@ public class Session : ISession
     /// <summary>
     /// Recarga o inicia una sesión
     /// </summary>
-    public async Task<Responses> LoginWith(string user, string password, bool safe)
+    internal async Task<Responses> LoginWith(string user, string password, bool safe)
     {
 
         // Cierra la sesión Actual
@@ -79,7 +79,7 @@ public class Session : ISession
     /// <summary>
     /// Recarga o inicia una sesión
     /// </summary>
-    public async Task<Responses> LoginWith(string token)
+    internal async Task<Responses> LoginWith(string token)
     {
 
         // Cierra la sesión Actual

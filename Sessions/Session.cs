@@ -1,4 +1,5 @@
 ﻿using LIN.Access.Notes.Controllers;
+using LIN.Access.Notes.Observers;
 using LIN.Access.Notes.Sessions.Abstractions;
 
 namespace LIN.Access.Notes.Sessions;
@@ -51,7 +52,7 @@ public class Session : ISession
     /// <summary>
     /// Recarga o inicia una sesión
     /// </summary>
-    internal async Task<Responses> LoginWith(string user, string password, bool safe)
+    public async Task<Responses> LoginWith(string user, string password, bool safe)
     {
 
         // Cierra la sesión Actual
@@ -71,6 +72,8 @@ public class Session : ISession
         Token = response.Token;
         AccountToken = response.Model.TokenCollection["identity"];
         Type = SessionType.Connected;
+
+        SessionObserver.Invoke(this);
         return Responses.Success;
 
     }
@@ -79,7 +82,7 @@ public class Session : ISession
     /// <summary>
     /// Recarga o inicia una sesión
     /// </summary>
-    internal async Task<Responses> LoginWith(string token)
+    public async Task<Responses> LoginWith(string token)
     {
 
         // Cierra la sesión Actual
@@ -100,6 +103,7 @@ public class Session : ISession
         AccountToken = response.Model.TokenCollection["identity"];
         Type = SessionType.Connected;
 
+        SessionObserver.Invoke(this);
         return Responses.Success;
 
     }

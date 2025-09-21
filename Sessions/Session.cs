@@ -1,6 +1,7 @@
 ﻿using LIN.Access.Notes.Controllers;
 using LIN.Access.Notes.Observers;
 using LIN.Access.Notes.Sessions.Abstractions;
+using LIN.Types.Cloud.Identity.Models.Identities;
 
 namespace LIN.Access.Notes.Sessions;
 

@@ -1,4 +1,6 @@
-﻿namespace LIN.Access.Notes.Sessions.Abstractions;
+﻿using LIN.Types.Cloud.Identity.Models.Identities;
+
+namespace LIN.Access.Notes.Sessions.Abstractions;
 
 public interface ISession
 {

@@ -1,4 +1,5 @@
 ﻿using LIN.Access.Notes.Sessions;
+using LIN.Types.Cloud.Identity.Models.Identities;
 
 namespace LIN.Access.Notes;
 

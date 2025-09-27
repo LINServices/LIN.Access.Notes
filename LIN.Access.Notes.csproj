@@ -7,7 +7,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Title>$(AssemblyName)</Title>
 		<Authors>LIN Platform</Authors>
-		<Version>2025.9.21</Version>
+		<Version>2025.9.27</Version>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Global.Http" Version="3.9.0" />
@@ -17,7 +17,3 @@
 		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="9.0.9" />
 	</ItemGroup>
 </Project>
-
-
-
-

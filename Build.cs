@@ -13,7 +13,7 @@ public static class Build
     public static IServiceCollection AddNotesService(this IServiceCollection service, string? url = null)
     {
         Service._Service = new();
-        Service._Service.SetDefault(url ?? "https://notes.api.linplatform.com/");
+        Service._Service.SetDefault(url ?? "https://api.linplatform.com/notes/");
 
         // Sesión por defecto.
         service.AddSingleton<ISession>(type => SessionManager.Instance.Default!);

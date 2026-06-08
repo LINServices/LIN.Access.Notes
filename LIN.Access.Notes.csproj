@@ -7,13 +7,13 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Title>$(AssemblyName)</Title>
 		<Authors>LIN Platform</Authors>
-		<Version>2026.1.10</Version>
+		<Version>2026.6.8</Version>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Global.Http" Version="4.0.0" />
-		<PackageReference Include="LIN.Types.Cloud.Identity" Version="2026.1.10" />
+		<PackageReference Include="LIN.Types.Cloud.Identity" Version="2026.1.26" />
 		<PackageReference Include="LIN.Types.Cloud.OpenAssistant" Version="1.5.0" />
-		<PackageReference Include="LIN.Types.Notes" Version="1.7.0" />
-		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="9.0.9" />
+		<PackageReference Include="LIN.Types.Notes" Version="1.8.0" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="10.0.8" />
 	</ItemGroup>
 </Project>

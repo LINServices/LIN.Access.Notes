@@ -14,6 +14,6 @@
 		<PackageReference Include="LIN.Types.Cloud.Identity" Version="2026.1.26" />
 		<PackageReference Include="LIN.Types.Cloud.OpenAssistant" Version="1.5.0" />
 		<PackageReference Include="LIN.Types.Notes" Version="1.8.0" />
-		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="10.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="10.0.13" />
 	</ItemGroup>
 </Project>
